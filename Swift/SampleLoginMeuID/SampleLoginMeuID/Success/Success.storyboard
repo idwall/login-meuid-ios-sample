@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Success View Controller-->
+        <scene sceneID="Oh0-tf-I4t">
+            <objects>
+                <viewController storyboardIdentifier="SuccessViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VhQ-1U-7rl" customClass="SuccessViewController" customModule="SampleLoginMeuID" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9JO-jh-Vn1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parabéns" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgV-xe-lhX">
+                                <rect key="frame" x="24" y="92" width="366" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" red="0.43137254899999999" green="0.31372549020000001" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seu login foi aprovado com MeuID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndT-CZ-C8V">
+                                <rect key="frame" x="24" y="121" width="366" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" red="0.43137254899999999" green="0.31372549020000001" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="code:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBp-5b-qIi">
+                                <rect key="frame" x="24" y="174" width="366" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" red="0.43137254899999999" green="0.31372549020000001" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="code_verifier:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8X-VL-Xso">
+                                <rect key="frame" x="24" y="226.5" width="366" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" red="0.43137254899999999" green="0.31372549020000001" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="SBp-5b-qIi" firstAttribute="top" secondItem="ndT-CZ-C8V" secondAttribute="bottom" constant="32" id="0zJ-bZ-god"/>
+                            <constraint firstItem="SBp-5b-qIi" firstAttribute="centerX" secondItem="9JO-jh-Vn1" secondAttribute="centerX" id="Dfg-cT-Ia2"/>
+                            <constraint firstItem="ndT-CZ-C8V" firstAttribute="top" secondItem="VgV-xe-lhX" secondAttribute="bottom" constant="8" id="J9L-59-OLU"/>
+                            <constraint firstItem="jO4-2k-v2g" firstAttribute="trailing" secondItem="VgV-xe-lhX" secondAttribute="trailing" constant="24" id="KCy-el-Prh"/>
+                            <constraint firstItem="ndT-CZ-C8V" firstAttribute="centerX" secondItem="9JO-jh-Vn1" secondAttribute="centerX" id="KbP-TY-J52"/>
+                            <constraint firstItem="VgV-xe-lhX" firstAttribute="centerX" secondItem="9JO-jh-Vn1" secondAttribute="centerX" id="Os0-C7-8m9"/>
+                            <constraint firstItem="SBp-5b-qIi" firstAttribute="leading" secondItem="ndT-CZ-C8V" secondAttribute="leading" id="Sqy-nL-vah"/>
+                            <constraint firstItem="jO4-2k-v2g" firstAttribute="trailing" secondItem="ndT-CZ-C8V" secondAttribute="trailing" constant="24" id="WCe-LK-vqf"/>
+                            <constraint firstItem="S8X-VL-Xso" firstAttribute="trailing" secondItem="SBp-5b-qIi" secondAttribute="trailing" id="Wf3-gI-Rbi"/>
+                            <constraint firstItem="S8X-VL-Xso" firstAttribute="top" secondItem="SBp-5b-qIi" secondAttribute="bottom" constant="32" id="ZGq-hB-YGv"/>
+                            <constraint firstItem="VgV-xe-lhX" firstAttribute="leading" secondItem="jO4-2k-v2g" secondAttribute="leading" constant="24" id="d8h-Ws-OYb"/>
+                            <constraint firstItem="S8X-VL-Xso" firstAttribute="centerX" secondItem="9JO-jh-Vn1" secondAttribute="centerX" id="f6u-EA-GtN"/>
+                            <constraint firstItem="VgV-xe-lhX" firstAttribute="top" secondItem="jO4-2k-v2g" secondAttribute="top" constant="48" id="iSV-yl-zKV"/>
+                            <constraint firstItem="ndT-CZ-C8V" firstAttribute="leading" secondItem="jO4-2k-v2g" secondAttribute="leading" constant="24" id="jEQ-8z-3bt"/>
+                            <constraint firstItem="S8X-VL-Xso" firstAttribute="leading" secondItem="ndT-CZ-C8V" secondAttribute="leading" id="jGz-QB-N8m"/>
+                            <constraint firstItem="SBp-5b-qIi" firstAttribute="trailing" secondItem="ndT-CZ-C8V" secondAttribute="trailing" id="ui2-Cm-4bc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jO4-2k-v2g"/>
+                    </view>
+                    <connections>
+                        <outlet property="codeLabel" destination="SBp-5b-qIi" id="PGp-u8-ubu"/>
+                        <outlet property="codeVerifierLabel" destination="S8X-VL-Xso" id="DX8-V3-WO1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Kw-lg-4Zk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="78"/>
+        </scene>
+    </scenes>
+</document>
