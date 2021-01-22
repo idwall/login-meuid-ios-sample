@@ -1,6 +1,6 @@
 # Sample Login com MeuID
 Sejam bem-vindos! 
-Neste README você encontra o passo a passo a ser feito para adicionar o Login com MeuID em seu app iOS (Swift e Objective C). Caso prefira, também temos os Samples dos dois apps aqui, basta baixar a pasta inteira. Para acessar o projeto em Swift, vá em `sampleloginmeuid-ios > Swift > SampleLoginMeuID` e para acessar o projeto em ObjC, vá em `sampleloginmeuid-ios > Obj-c > SampleLoginMeuID`.
+Neste README você encontra o passo a passo a ser feito para adicionar o Login com MeuID em seu app iOS (Swift e Objective C). Caso prefira, também temos os Samples dos dois apps aqui, basta baixar a pasta inteira. Para acessar o projeto em Swift, vá em `sampleloginmeuid-ios > Swift > SampleLoginMeuID` e para acessar o projeto em ObjC, vá em `sampleloginmeuid-ios > Obj-c > SampleLoginMeuID`. Segue nosso passo a passo em Swift e em Objective-C:
 
 # Swift
 
@@ -14,7 +14,7 @@ enum ButtonStyle {
 }
 ```
 
-Em nossa [documentação](<adicionar_link_da_doc>) mostramos os layouts disponíveis.
+Em nossa [documentação](<https://idwall-meuid.readme.io/docs>) mostramos os layouts disponíveis.
 
 Adicionamos as imagens do logo do MeuID na pasta `Assets.xcassets` com os seguintes nomes:
 - logo roxo: logo_meuid_purple
@@ -89,6 +89,34 @@ Para que seu aplicativo receba a resposta de maneira correta do MeuID, deve ser 
 - Em `URL Schemes`, adicionar: `meuid-application_id` (lembrando que este `application_id` é o mesmo que foi adicionado na ViewController. Sendo assim, o padrão é `meuid-` + seu application id)
 
 ## 4. Obtendo os parâmetros do retorno do MeuID
+Na classe `AppDelegate.swift` utilizamos a seguinte função:
+```
+func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    let successStoryBoard = UIStoryboard(name: "Success", bundle: Bundle.main)
+    guard let viewController = successStoryBoard.instantiateViewController(withIdentifier: "SuccessViewController") as? SuccessViewController else { return true }
+    self.window?.rootViewController?.present(viewController, animated: true, completion: nil)
+    viewController.setParametersFromURL(url: url)
+    return true
+}
+```
+
+Nela pegamos a url de retorno com os parâmetros que o MeuID envia (o `code` e o `code_verifier`). A obtenção dos parâmetros está na classe `Success.swift`:
+
+```
+func setParametersFromURL(url: URL) {
+    if let codeParam = getQueryStringParameter(url: url.absoluteString, param: codeString),
+       let codeVerifierParam = getQueryStringParameter(url: url.absoluteString, param: codeVerifierString) {
+        codeLabel.text = "code: \(codeParam)"
+        codeVerifierLabel.text = "code_verifier: \(codeVerifierParam)"
+    }
+}
+
+// MARK: - Private Functions
+private func getQueryStringParameter(url: String, param: String) -> String? {
+    guard let url = URLComponents(string: url) else { return nil }
+    return url.queryItems?.first(where: { $0.name == param })?.value
+}
+```
 
 
 # Objective C
@@ -185,3 +213,35 @@ Para que seu aplicativo receba a resposta de maneira correta do MeuID, deve ser 
 - Em `URL Schemes`, adicionar: `meuid-application_id` (lembrando que este `application_id` é o mesmo que foi adicionado na ViewController. Sendo assim, o padrão é `meuid-` + seu application id)
 
 ## 4. Obtendo os parâmetros do retorno do MeuID
+Na classe `AppDelegate.m` utilizamos a seguinte função:
+```
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    NSString * storyboardName = @"Success";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    SuccessViewController *successViewController = [storyboard instantiateViewControllerWithIdentifier:@"SuccessViewController"];
+    [self.window.rootViewController presentViewController:successViewController animated:YES completion:nil];
+    [successViewController setParametersFromURL:url];
+    return YES;
+}
+```
+
+Nela pegamos a url de retorno com os parâmetros que o MeuID envia (o `code` e o `code_verifier`). A obtenção dos parâmetros está na classe `SuccessViewController.m`:
+
+```
+- (void)setParametersFromURL:(NSURL *)url {
+    NSString *code = [self queryParametersFromURL:url][@"code"];
+    NSString *codeVerifier = [self queryParametersFromURL:url][@"code_verifier"];
+    self.codeLabel.text = [_codeLabel.text stringByAppendingString:code];
+    self.codeVerifierLabel.text = [_codeVerifierLabel.text stringByAppendingString:codeVerifier];
+}
+
+- (NSDictionary<NSString *, NSString *> *)queryParametersFromURL:(NSURL *)url {
+    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:NO];
+    NSMutableDictionary<NSString *, NSString *> *queryParams = [NSMutableDictionary<NSString *, NSString *> new];
+    for (NSURLQueryItem *queryItem in [urlComponents queryItems]) {
+        if (queryItem.value == nil) { continue; }
+        [queryParams setObject:queryItem.value forKey:queryItem.name];
+    }
+    return queryParams;
+}
+```
