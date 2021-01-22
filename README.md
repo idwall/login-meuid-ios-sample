@@ -124,7 +124,7 @@ private func getQueryStringParameter(url: String, param: String) -> String? {
 ## 1. Adicionando o botão
 No projeto Sample, adicionamos o botão na Storyboard e configuramos seu layout na ViewController, definindo os 3 diferentes layouts que temos disponíveis. Criamos três funções diferentes para indicar o tipo do botão, porém se seu app vai usar apenas um estilo, não há a necessidade de colocar essa lógica em seu código. 
 
-Em nossa [documentação](<adicionar_link_da_doc>) mostramos os layouts disponíveis.
+Em nossa [documentação](<https://idwall-meuid.readme.io/docs>) mostramos os layouts disponíveis.
 
 Adicionamos as imagens do logo do MeuID na pasta `Assets.xcassets` com os seguintes nomes:
 - logo roxo: logo_meuid_purple
